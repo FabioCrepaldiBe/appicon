@@ -55,7 +55,7 @@ class BaseIconGen(metaclass=abc.ABCMeta):
                 if not os.path.exists(os.path.dirname(filename)):
                     os.makedirs(os.path.dirname(filename))
                 size = list(map(lambda x: int(float(x)), info['size'].split('x')))
-                i = img.resize((size[0], size[1]), Image.ANTIALIAS)
+                i = img.resize((size[0], size[1]), Image.Resampling.LANCZOS)
                 i.save(filename)
             # move to destination directory
             file_names = os.listdir(tmp_dirname)
